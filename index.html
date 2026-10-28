@@ -1,103 +1,856 @@
+
 <!DOCTYPE html>
 <html lang="bg">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#090b1d">
-<title>Q-MAX PLAYER</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#080808">
+<title>Q-MAX PLAYER | Black & Gold</title>
 <style>
-:root{--bg:#070916;--glass:rgba(22,25,52,.55);--border:rgba(255,255,255,.15);--blue:#3478f6;--purple:#9747ff;--text:#f7f7ff;--muted:#a8add0}
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif}
-body{padding:calc(15px + env(safe-area-inset-top)) 15px calc(110px + env(safe-area-inset-bottom));background:radial-gradient(circle at 10% 5%,rgba(52,120,246,.3),transparent 35%),radial-gradient(circle at 90% 30%,rgba(151,71,255,.28),transparent 35%),radial-gradient(circle at 40% 90%,rgba(80,40,190,.18),transparent 40%),#070916}
-button,input{font:inherit}button{color:inherit;cursor:pointer}.app{max-width:720px;margin:auto}
-.glass{background:var(--glass);border:1px solid var(--border);backdrop-filter:blur(25px) saturate(170%);-webkit-backdrop-filter:blur(25px) saturate(170%);box-shadow:0 20px 50px #0005,inset 0 1px 0 #ffffff1a;border-radius:25px}
-.header{display:flex;align-items:center;gap:12px;margin-bottom:20px}.logo{width:48px;height:48px;display:grid;place-items:center;border-radius:16px;font-weight:900;font-size:19px;background:linear-gradient(135deg,var(--blue),var(--purple));box-shadow:0 0 30px #8450ff73}.brand{flex:1}.brand-title{font-size:20px;font-weight:900;letter-spacing:.5px}.gradient-text{background:linear-gradient(90deg,#66a9ff,#c084fc);-webkit-background-clip:text;background-clip:text;color:transparent}.brand-sub{margin-top:3px;font-size:10px;letter-spacing:1.5px;color:var(--muted)}.settings-button{width:44px;height:44px;border-radius:14px;border:1px solid var(--border);background:#ffffff0f}
-.screen{display:none}.screen.active{display:block;animation:screenIn .25s ease}@keyframes screenIn{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}
-.section-title{margin:8px 2px 18px}.eyebrow{font-size:10px;font-weight:800;letter-spacing:1.7px;color:#b99aff}h1{margin:6px 0;font-size:27px}h2{margin:0;font-size:18px}p{color:var(--muted);line-height:1.5}.small{font-size:12px;color:var(--muted)}.card{padding:18px;margin-bottom:14px}.hero{position:relative;overflow:hidden}.hero:before{content:"";position:absolute;width:230px;height:230px;right:-100px;top:-120px;border-radius:50%;background:#9747ff52;filter:blur(20px)}.hero h2{position:relative;margin:10px 0;font-size:27px;line-height:1.1}.hero p{position:relative}
-.primary{border:0;padding:13px 17px;border-radius:14px;font-weight:800;background:linear-gradient(120deg,var(--blue),var(--purple));box-shadow:0 8px 25px #7448ff59}.secondary{padding:12px 15px;border-radius:14px;border:1px solid var(--border);background:#ffffff0f}.button-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px}
-.quick-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.quick-card{min-height:110px;text-align:left;padding:15px;border-radius:20px;border:1px solid var(--border);background:#ffffff0e}.quick-icon{font-size:25px;margin-bottom:14px}.quick-card strong,.quick-card span{display:block}.quick-card span{margin-top:5px;font-size:11px;color:var(--muted)}
-.file-button{display:block;width:100%;text-align:center;padding:15px;border-radius:15px;font-weight:850;background:linear-gradient(110deg,#3478f6,#9747ff)}#fileInput{display:none}.search,.url-field{width:100%;margin-top:13px;padding:13px;color:white;outline:none;border-radius:14px;border:1px solid var(--border);background:#0508198c}.song-list{display:flex;flex-direction:column;gap:8px}.song-row{display:flex;align-items:center;gap:11px;padding:11px;border-radius:17px;border:1px solid var(--border);background:#ffffff0d}.song-icon{width:44px;height:44px;flex-shrink:0;display:grid;place-items:center;border-radius:13px;background:linear-gradient(135deg,#285fbf,#7c3fc1);font-size:20px}.song-info{flex:1;min-width:0}.song-name{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-weight:700}.song-artist{margin-top:4px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;color:var(--muted);font-size:11px}.song-row button{border:0;background:transparent;font-size:17px;padding:8px}
-.album{width:min(75vw,330px);aspect-ratio:1;margin:5px auto 24px;display:grid;place-items:center;position:relative;overflow:hidden;border-radius:30px;border:1px solid #ffffff33;background:radial-gradient(circle at 30% 25%,#6eb5ff,transparent 22%),radial-gradient(circle at 70% 70%,#b85cff,transparent 28%),linear-gradient(135deg,#0d2a68,#26114c 60%,#080b20);box-shadow:0 25px 60px #0006}.album:before,.album:after{content:"";position:absolute;border-radius:50%;border:1px solid #ffffff40;width:75%;aspect-ratio:1}.album:after{width:52%}.album-symbol{position:relative;z-index:2;font-size:75px;color:#e7d6ff;text-shadow:0 0 30px #b67affcc}.now-title{text-align:center;font-size:24px;font-weight:900;overflow-wrap:anywhere}.now-artist{text-align:center;margin-top:6px;color:var(--muted)}input[type=range]{width:100%;accent-color:#9d6bff}.seek{margin-top:23px}.time-row{display:flex;justify-content:space-between;margin-top:5px;color:var(--muted);font-size:11px}.player-controls{display:flex;justify-content:center;align-items:center;gap:clamp(8px,3vw,18px);margin:20px 0}.control-button{border:0;background:transparent;font-size:22px;padding:7px}.play-button{width:65px;height:65px;flex-shrink:0;border:0;border-radius:50%;font-size:25px;background:linear-gradient(135deg,#438aff,#a74eff);box-shadow:0 0 32px #8b5bff80}.volume-row{display:grid;grid-template-columns:24px 1fr 24px 42px;align-items:center;gap:8px;color:var(--muted);font-size:11px}.visualizer{display:block;width:100%;height:105px;margin-top:13px;border-radius:17px;background:#05081973}
-.eq-header{display:flex;justify-content:space-between;align-items:center;gap:12px}.switch-row{display:flex;align-items:center;gap:7px;font-size:12px}.switch-row input{width:20px;height:20px;accent-color:#9c6cff}.presets{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}.preset{padding:8px 12px;border-radius:99px;border:1px solid var(--border);background:#ffffff0e;font-size:11px}.preset.active{color:#eadcff;border-color:#bc8effb3;background:#9747ff40}.eq-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;margin-top:20px}.eq-band{text-align:center;padding:10px 3px;border-radius:15px;border:1px solid #ffffff14;background:#ffffff0a}.eq-band strong{display:block;font-size:11px}.eq-band input{width:28px;height:150px;margin:12px auto;writing-mode:vertical-lr;direction:rtl}.eq-db{font-size:10px;color:#ddcaff}.eq-name{margin-top:5px;font-size:9px;color:var(--muted)}.eq-extra{margin-top:20px}.eq-extra label{display:flex;justify-content:space-between;margin-bottom:8px;font-size:12px}.notice{margin-top:15px;padding:12px;border-radius:14px;color:#b9c1e2;font-size:11px;line-height:1.5;background:#ffffff0a}
-.bottom-nav{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:100;max-width:720px;margin:auto;display:grid;grid-template-columns:repeat(5,1fr);padding:8px 5px;border-radius:26px;background:#11142da3;border:1px solid #ffffff2b;backdrop-filter:blur(30px) saturate(190%);-webkit-backdrop-filter:blur(30px) saturate(190%);box-shadow:0 15px 45px #0007,inset 0 1px 0 #ffffff1f}.nav-button{border:0;padding:8px 2px;display:flex;flex-direction:column;align-items:center;gap:5px;border-radius:17px;background:transparent;color:#a7adcd;font-size:9px}.nav-icon{font-size:20px}.nav-button.active{color:#e3d2ff;background:linear-gradient(135deg,#3478f629,#9747ff3d);text-shadow:0 0 12px #a870ffd9}
-@media(min-width:600px){.quick-grid{grid-template-columns:repeat(4,1fr)}}.storage-status{font-size:11px;color:#bdb6e8;margin-top:9px}
+:root {
+  color-scheme: dark;
+  --bg:#080808;
+  --panel:#11110f;
+  --panel2:#181713;
+  --gold:#d4af37;
+  --gold2:#f7e7a1;
+  --muted:#858174;
+  --line:rgba(212,175,55,.2);
+}
+* { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+body {
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(ellipse at 50% -10%,rgba(212,175,55,.13),transparent 43%),
+    radial-gradient(ellipse at 100% 60%,rgba(130,90,10,.06),transparent 40%),
+    var(--bg);
+  color:#f5f0df;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+button,input { font:inherit; }
+button { cursor:pointer; }
+button:focus-visible,input:focus-visible { outline:2px solid var(--gold2);outline-offset:3px; }
+.app { max-width:520px; margin:auto; padding:calc(16px + env(safe-area-inset-top)) 18px calc(28px + env(safe-area-inset-bottom)); }
+header { display:flex;align-items:center;justify-content:space-between;margin-bottom:24px; }
+.brand { display:flex;align-items:center;gap:11px; }
+.logo {
+  width:43px;height:43px;border-radius:14px;
+  display:grid;place-items:center;
+  color:#090909;font-size:22px;font-weight:900;
+  background:linear-gradient(135deg,#fff0a8,#d4af37 52%,#8b6815);
+  box-shadow:0 0 25px #d4af3720;
+}
+.brand-name { font-size:17px;font-weight:850;letter-spacing:2px; }
+.brand-sub { color:var(--gold);font-size:9px;letter-spacing:3px;margin-top:4px; }
+.status { font-size:10px;letter-spacing:1px;color:var(--gold2);border:1px solid var(--line);border-radius:30px;padding:8px 10px; }
+.section-label { color:var(--muted);font-size:10px;letter-spacing:2.4px;text-transform:uppercase; }
+.now-playing { text-align:center;margin:8px 0 15px; }
+.track-title { font-size:22px;font-weight:750;letter-spacing:.2px;overflow-wrap:anywhere;margin:9px 0 5px; }
+.track-artist { color:var(--muted);font-size:13px; }
+.art-stage { position:relative;width:min(78vw,330px);margin:0 auto 21px;aspect-ratio:1;display:grid;place-items:center; }
+.art-glow {
+  position:absolute;inset:12%;border-radius:50%;
+  background:#d4af37;filter:blur(55px);opacity:.12;
+  transition:opacity .4s;
+}
+.art-stage.playing .art-glow { opacity:.28; }
+.record {
+  position:relative;width:94%;aspect-ratio:1;border-radius:50%;
+  background:repeating-radial-gradient(circle at center,
+    #27251e 0px,#151512 2px,#28251d 3px,#0c0c0b 5px,#191813 6px);
+  border:1px solid #51421c;
+  box-shadow:0 18px 50px #000,0 0 0 7px #d4af3708,0 0 35px #d4af3712;
+  display:grid;place-items:center;
+}
+.record:before {
+  content:"";position:absolute;inset:9%;border-radius:50%;
+  border:1px solid #d4af3729;
+  background:repeating-radial-gradient(circle,#ffffff08 0 1px,transparent 2px 5px);
+}
+.record:after {
+  content:"";position:absolute;inset:20%;border-radius:50%;border:1px solid #d4af3723;
+}
+.record.spinning { animation:spin 7s linear infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
+.record-label {
+  width:34%;aspect-ratio:1;border-radius:50%;z-index:2;
+  background:radial-gradient(circle at 35% 28%,#fff1a7,#d4af37 38%,#8c6818 75%,#211909);
+  border:3px solid #272014;box-shadow:0 0 20px #d4af3728;
+  display:grid;place-items:center;
+}
+.record-label-inner {
+  width:72%;aspect-ratio:1;border-radius:50%;border:1px solid #6c5015;
+  display:grid;place-items:center;color:#171107;font-size:9px;font-weight:900;letter-spacing:1px;
+}
+#visualizer { position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none; }
+.track-meta { display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 0 10px; }
+.track-meta .section-label { overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
+.icon-btn {
+  display:grid;place-items:center;flex-shrink:0;
+  border:1px solid var(--line);background:#d4af370b;color:var(--gold2);
+  width:39px;height:39px;border-radius:13px;font-size:19px;
+}
+.icon-btn.active { color:#080808;background:var(--gold); }
+.progress-wrap { position:relative;padding:9px 0; }
+input[type=range] {
+  --pct:0%;
+  appearance:none;-webkit-appearance:none;
+  width:100%;height:5px;border-radius:20px;outline:none;
+  background:linear-gradient(90deg,var(--gold) var(--pct),#343128 var(--pct));
+  cursor:pointer;display:block;
+}
+input[type=range]::-webkit-slider-thumb {
+  appearance:none;-webkit-appearance:none;width:14px;height:14px;border-radius:50%;
+  background:var(--gold2);border:2px solid var(--gold);
+  box-shadow:0 0 8px #d4af3780;
+}
+input[type=range]::-moz-range-thumb {
+  width:11px;height:11px;border-radius:50%;background:var(--gold2);
+  border:2px solid var(--gold);box-shadow:0 0 8px #d4af3780;
+}
+.progress-wrap.dragging input[type=range] {
+  height:7px;box-shadow:0 0 12px #d4af37a0,0 0 30px #d4af3740;
+  animation:seekGlow .8s ease-in-out infinite alternate;
+}
+.progress-wrap.dragging input[type=range]::-webkit-slider-thumb {
+  transform:scale(1.25);box-shadow:0 0 0 7px #d4af3720,0 0 22px #ffe89b;
+}
+@keyframes seekGlow { from {filter:brightness(1)} to {filter:brightness(1.55)} }
+.time-row { display:flex;justify-content:space-between;color:var(--muted);font-size:10px;font-variant-numeric:tabular-nums; }
+.controls { display:flex;align-items:center;justify-content:center;gap:21px;margin:14px 0 18px; }
+.control-btn {
+  border:0;background:transparent;color:#e8dfc3;font-size:25px;
+  width:46px;height:48px;display:grid;place-items:center;border-radius:15px;
+}
+.control-btn.small { color:var(--muted);font-size:19px;width:38px; }
+.control-btn.active { color:var(--gold); }
+.play-btn {
+  width:66px;height:66px;border-radius:23px;border:1px solid #f8e4a0;
+  background:linear-gradient(145deg,#ffe9a0,#d4af37 57%,#a67c18);
+  color:#100d04;font-size:26px;display:grid;place-items:center;
+  box-shadow:0 5px 25px #d4af3732,inset 0 1px #fff5c9;
+}
+.volume-row { display:flex;align-items:center;gap:11px;margin:0 2px 22px;color:var(--gold); }
+.volume-row input { flex:1; }
+.panel {
+  background:linear-gradient(145deg,#14130fdd,#0d0d0cee);
+  border:1px solid var(--line);border-radius:21px;padding:16px;margin:15px 0;
+  box-shadow:0 12px 35px #0004;
+}
+.panel-head { display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px; }
+.panel-title { font-weight:750;font-size:14px;letter-spacing:.4px; }
+.pill {
+  border:1px solid var(--line);border-radius:30px;padding:7px 10px;
+  background:#d4af370b;color:var(--gold2);font-size:10px;
+}
+.eq-grid { display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px; }
+.eq-band { display:flex;flex-direction:column;align-items:center;gap:10px;min-width:0; }
+.eq-value { font-size:10px;color:var(--gold2);font-variant-numeric:tabular-nums; }
+.eq-slider {
+  appearance:none;-webkit-appearance:none;
+  writing-mode:vertical-lr;direction:rtl;
+  width:26px;height:100px;background:transparent!important;
+  cursor:pointer;touch-action:pan-x;
+}
+.eq-slider::-webkit-slider-runnable-track { width:4px;background:#39352a;border-radius:8px; }
+.eq-slider::-webkit-slider-thumb {
+  appearance:none;-webkit-appearance:none;width:15px;height:15px;
+  border-radius:50%;background:var(--gold2);border:2px solid var(--gold);
+  box-shadow:0 0 10px #d4af3760;
+}
+.eq-slider::-moz-range-track { width:4px;background:#39352a;border-radius:8px; }
+.eq-slider::-moz-range-thumb { width:11px;height:11px;border-radius:50%;background:var(--gold2);border:2px solid var(--gold); }
+.eq-freq { color:var(--muted);font-size:9px; }
+.eq-bottom { display:flex;gap:8px;margin-top:16px;align-items:center; }
+.eq-bottom select {
+  min-width:0;flex:1;background:#17150f;border:1px solid var(--line);
+  border-radius:11px;color:#eee3c2;padding:10px;font-size:11px;
+}
+.eq-bottom button { white-space:nowrap; }
+.library-head { display:flex;justify-content:space-between;align-items:center;gap:10px; }
+.library-head .panel-title { font-size:16px; }
+.library-count { color:var(--muted);font-size:11px;margin-top:4px; }
+.search {
+  width:100%;margin:15px 0 10px;border:1px solid #ffffff12;
+  border-radius:12px;padding:12px 13px;background:#ffffff06;color:#fff1c8;
+  outline:none;font-size:12px;
+}
+.search:focus { border-color:var(--line); }
+.song-list { display:flex;flex-direction:column;gap:5px; }
+.song {
+  display:flex;align-items:center;gap:11px;min-width:0;
+  padding:10px;border:1px solid transparent;border-radius:13px;
+  background:#ffffff03;cursor:pointer;
+}
+.song.current { background:#d4af370c;border-color:#d4af372c; }
+.song-number {
+  width:29px;height:34px;display:grid;place-items:center;flex-shrink:0;
+  border-radius:9px;background:#d4af370d;color:var(--gold);font-size:12px;
+}
+.song-text { flex:1;min-width:0; }
+.song-name { font-size:12px;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
+.song-detail { color:var(--muted);font-size:10px;margin-top:4px; }
+.song-play { color:var(--gold);font-size:15px;padding:5px; }
+.empty { text-align:center;color:var(--muted);font-size:12px;padding:25px 8px;line-height:1.7; }
+.footer { text-align:center;font-size:9px;letter-spacing:2px;color:#655a38;margin:24px 0 4px; }
+input[type=file] { display:none; }
+@media (max-width:360px) {
+  .app {padding-left:12px;padding-right:12px}
+  .controls {gap:12px}
+  .eq-grid {gap:3px}
+  .panel {padding:13px}
+  .track-title {font-size:19px}
+}
 </style>
 </head>
 <body>
 <div class="app">
-<header class="header"><div class="logo">Q</div><div class="brand"><div class="brand-title">Q-MAX <span class="gradient-text">PLAYER</span></div><div class="brand-sub">PURE SOUND · DEEP EXPERIENCE</div></div><button class="settings-button" id="settingsButton" aria-label="Настройки">⚙</button></header>
-<section class="screen active" id="home">
-<div class="glass card hero"><div class="eyebrow">Q-MAX SOUNDSPACE</div><h2>Твоята музика.<br><span class="gradient-text">Твоят звук.</span></h2><p>Личен музикален плеър за твоите локални аудиофайлове.</p><div class="button-row"><button class="primary" data-screen="library">＋ Добави музика</button><button class="secondary" data-screen="equalizer">Настрой звука</button></div></div>
-<div class="glass card"><div class="eyebrow">NOW PLAYING</div><h2 id="homeSong" style="margin-top:8px">Няма избрана песен</h2><p id="homeArtist">Отвори библиотеката и избери аудиофайл.</p><button class="secondary" data-screen="song">Отвори песента →</button></div>
-<div class="section-title"><div class="eyebrow">QUICK ACCESS</div><h2 style="margin-top:7px">Q-MAX</h2></div><div class="quick-grid">
-<button class="quick-card" data-screen="library"><div class="quick-icon">🎵</div><strong>Музика</strong><span>Локални файлове</span></button><button class="quick-card" data-screen="song"><div class="quick-icon">💿</div><strong>Песен</strong><span>Now Playing</span></button><button class="quick-card" data-screen="equalizer"><div class="quick-icon">🎚️</div><strong>Q-MAX EQ</strong><span>Настрой звука</span></button><button class="quick-card" data-screen="browser"><div class="quick-icon">🌐</div><strong>Браузър</strong><span>Отвори сайт</span></button></div>
-<div class="glass card" style="margin-top:14px"><h2>Q-MAX Plasma</h2><canvas class="visualizer" id="homeVisualizer"></canvas><p class="small">Спектърът реагира на музиката, когато аудиоанализаторът е активен.</p></div>
-</section>
-<section class="screen" id="library"><div class="section-title"><div class="eyebrow">YOUR COLLECTION</div><h1>Моята музика</h1><p>Добави аудиофайлове от приложението Files. Q-MAX ще опита да ги запази локално.</p></div><div class="glass card"><label class="file-button" for="fileInput">＋ ИЗБЕРИ ПЕСНИ</label><input id="fileInput" type="file" multiple accept="audio/*,.mp3,.m4a,.aac,.wav,.ogg,.flac"><input class="search" id="search" placeholder="⌕  Търси песен..." aria-label="Търси песен"><div class="storage-status" id="storageStatus">Проверка на локалната библиотека…</div></div><div class="song-list" id="songList"><div class="glass card"><p style="margin:0">Все още няма добавена музика.</p></div></div></section>
-<section class="screen" id="song"><div class="section-title"><div class="eyebrow">NOW PLAYING</div><h1>Песен</h1></div><div class="glass card"><div class="album"><div class="album-symbol">♫</div></div><div class="now-title" id="songTitle">Няма избрана песен</div><div class="now-artist" id="songArtist">Q-MAX PLAYER</div><div class="seek"><input type="range" id="seekBar" min="0" max="1000" value="0" aria-label="Позиция на песента"><div class="time-row"><span id="currentTime">0:00</span><span id="duration">0:00</span></div></div><div class="player-controls"><button class="control-button" id="shuffleButton" aria-label="Разбъркване">🔀</button><button class="control-button" id="previousButton" aria-label="Предишна песен">⏮</button><button class="play-button" id="playButton" aria-label="Пускане или пауза">▶</button><button class="control-button" id="nextButton" aria-label="Следваща песен">⏭</button><button class="control-button" id="repeatButton" aria-label="Повторение">🔁</button></div><div class="volume-row"><span>🔈</span><input type="range" id="volume" min="0" max="1" step="0.01" value="0.8" aria-label="Сила на звука"><span>🔊</span><span id="volumeValue">80%</span></div></div><div class="glass card"><h2>Плазмен спектър</h2><canvas class="visualizer" id="songVisualizer"></canvas><p class="small" id="audioStatus">Аудио системата е готова.</p></div></section>
-<section class="screen" id="equalizer"><div class="section-title"><div class="eyebrow">PRO AUDIO ENGINE</div><h1>Q-MAX Equalizer</h1><p>Регулирай реалните честоти на възпроизвеждания звук.</p></div><div class="glass card"><div class="eq-header"><div><h2>Professional EQ</h2><div class="small">5-band audio processing</div></div><label class="switch-row"><input id="eqEnabled" type="checkbox"> EQ</label></div><div class="presets"><button class="preset active" data-preset="flat">Flat</button><button class="preset" data-preset="clean">Clean</button><button class="preset" data-preset="bass">Deep Bass</button><button class="preset" data-preset="vocal">Vocal</button><button class="preset" data-preset="bright">Clarity</button></div><div class="eq-grid">
-<div class="eq-band"><strong>60Hz</strong><input class="eq-slider" data-band="0" type="range" min="-12" max="12" step=".5" value="0"><div class="eq-db" id="db0">0 dB</div><div class="eq-name">SUB</div></div>
-<div class="eq-band"><strong>250Hz</strong><input class="eq-slider" data-band="1" type="range" min="-12" max="12" step=".5" value="0"><div class="eq-db" id="db1">0 dB</div><div class="eq-name">BASS</div></div>
-<div class="eq-band"><strong>1kHz</strong><input class="eq-slider" data-band="2" type="range" min="-12" max="12" step=".5" value="0"><div class="eq-db" id="db2">0 dB</div><div class="eq-name">MID</div></div>
-<div class="eq-band"><strong>4kHz</strong><input class="eq-slider" data-band="3" type="range" min="-12" max="12" step=".5" value="0"><div class="eq-db" id="db3">0 dB</div><div class="eq-name">PRESENCE</div></div>
-<div class="eq-band"><strong>12kHz</strong><input class="eq-slider" data-band="4" type="range" min="-12" max="12" step=".5" value="0"><div class="eq-db" id="db4">0 dB</div><div class="eq-name">AIR</div></div></div>
-<div class="eq-extra"><label><span>Preamp</span><span id="preampValue">-3 dB</span></label><input id="preamp" type="range" min="-12" max="0" step=".5" value="-3"></div><div class="eq-extra"><label><span>Dynamic Control</span><span id="compressorValue">25%</span></label><input id="compressorControl" type="range" min="0" max="100" value="25"></div><div class="notice" id="eqNotice">EQ е изключен. Първо пусни песен, след това включи EQ.</div></div><div class="glass card"><h2>За по-чист звук</h2><p class="small">Започни с промени между ±2 и ±4 dB. Ако усилваш баса, остави Preamp около -3 до -6 dB, за да намалиш риска от изкривяване.</p><button class="secondary" id="resetEQ">Reset → Flat</button></div></section>
-<section class="screen" id="browser"><div class="section-title"><div class="eyebrow">WEB</div><h1>Браузър</h1><p>Постави адрес и го отвори от Q-MAX.</p></div><div class="glass card"><input class="url-field" id="browserURL" type="url" placeholder="https://www.youtube.com"><div class="button-row"><button class="primary" id="openWebsite">Отвори ↗</button><button class="secondary" id="youtubeButton">YouTube</button><button class="secondary" id="googleButton">Google</button></div><div class="notice">Този раздел отваря обикновени уеб адреси. Той не изтегля автоматично музика от YouTube.</div></div></section>
+  <header>
+    <div class="brand">
+      <div class="logo">Q</div>
+      <div>
+        <div class="brand-name">Q-MAX PLAYER</div>
+        <div class="brand-sub">BLACK & GOLD EDITION</div>
+      </div>
+    </div>
+    <div class="status" id="status">● READY</div>
+  </header>
+
+  <main>
+    <div class="now-playing">
+      <div class="section-label">NOW PLAYING</div>
+      <div class="track-title" id="trackTitle">Избери музика</div>
+      <div class="track-artist" id="trackArtist">Твоята музика. Твоят звук.</div>
+    </div>
+
+    <div class="art-stage" id="artStage">
+      <div class="art-glow"></div>
+      <div class="record" id="record">
+        <div class="record-label"><div class="record-label-inner">Q-MAX</div></div>
+      </div>
+      <canvas id="visualizer"></canvas>
+    </div>
+
+    <div class="track-meta">
+      <div class="section-label" id="trackFilename">BLACK • GOLD • SOUND</div>
+      <button class="icon-btn" id="favoriteBtn" aria-label="Любима песен" title="Любима песен">♡</button>
+    </div>
+
+    <div class="progress-wrap" id="progressWrap">
+      <input id="progress" type="range" min="0" max="1000" value="0" aria-label="Позиция в песента">
+    </div>
+    <div class="time-row"><span id="currentTime">0:00</span><span id="duration">0:00</span></div>
+
+    <div class="controls">
+      <button class="control-btn small" id="shuffleBtn" aria-label="Разбъркване" title="Разбъркване">⤨</button>
+      <button class="control-btn" id="prevBtn" aria-label="Предишна песен" title="Предишна песен">⏮</button>
+      <button class="play-btn" id="playBtn" aria-label="Пускане или пауза">▶</button>
+      <button class="control-btn" id="nextBtn" aria-label="Следваща песен" title="Следваща песен">⏭</button>
+      <button class="control-btn small" id="repeatBtn" aria-label="Повтаряне" title="Повтаряне">↻</button>
+    </div>
+
+    <div class="volume-row">
+      <span>◖</span>
+      <input id="volume" type="range" min="0" max="100" value="80" aria-label="Сила на звука">
+      <span>◗</span>
+    </div>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <div class="panel-title">GOLD EQUALIZER</div>
+          <div class="library-count">Оформи звука по свой вкус</div>
+        </div>
+        <button class="pill" id="eqToggle">EQ ON</button>
+      </div>
+      <div class="eq-grid" id="eqGrid">
+        <div class="eq-band"><span class="eq-value" id="val0">+4 dB</span><input class="eq-slider" data-band="0" type="range" min="-12" max="12" value="4" step="1" aria-label="Бас"><span class="eq-freq">60 Hz</span></div>
+        <div class="eq-band"><span class="eq-value" id="val1">+2 dB</span><input class="eq-slider" data-band="1" type="range" min="-12" max="12" value="2" step="1" aria-label="Ниски среди"><span class="eq-freq">250 Hz</span></div>
+        <div class="eq-band"><span class="eq-value" id="val2">0 dB</span><input class="eq-slider" data-band="2" type="range" min="-12" max="12" value="0" step="1" aria-label="Средни"><span class="eq-freq">1 kHz</span></div>
+        <div class="eq-band"><span class="eq-value" id="val3">+2 dB</span><input class="eq-slider" data-band="3" type="range" min="-12" max="12" value="2" step="1" aria-label="Високи среди"><span class="eq-freq">4 kHz</span></div>
+        <div class="eq-band"><span class="eq-value" id="val4">+3 dB</span><input class="eq-slider" data-band="4" type="range" min="-12" max="12" value="3" step="1" aria-label="Високи"><span class="eq-freq">12 kHz</span></div>
+      </div>
+      <div class="eq-bottom">
+        <select id="preset" aria-label="EQ пресет">
+          <option value="custom">Custom</option>
+          <option value="bass">Bass Boost</option>
+          <option value="balanced">Balanced</option>
+          <option value="vocal">Vocal</option>
+          <option value="treble">Treble</option>
+          <option value="flat">Flat</option>
+        </select>
+        <button class="pill" id="bassBtn">BASS BOOST</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="library-head">
+        <div>
+          <div class="panel-title">МОЯТА БИБЛИОТЕКА</div>
+          <div class="library-count" id="libraryCount">0 песни</div>
+        </div>
+        <button class="icon-btn" id="addBtn" aria-label="Добави песни" title="Добави песни">＋</button>
+        <input id="fileInput" type="file" accept="audio/*,.mp3,.m4a,.aac,.wav,.ogg,.flac,.opus" multiple>
+      </div>
+      <input class="search" id="search" type="search" placeholder="⌕  Търси песен..." aria-label="Търсене на песен">
+      <div class="song-list" id="songList"></div>
+      <div class="empty" id="emptyState">Библиотеката е празна.<br>Натисни ＋, за да добавиш музика от устройството.</div>
+    </section>
+  </main>
+
+  <div class="footer">Q-MAX • PURE SOUND • GOLD STANDARD</div>
 </div>
-<nav class="bottom-nav"><button class="nav-button active" data-screen="home"><span class="nav-icon">⌂</span>Начало</button><button class="nav-button" data-screen="library"><span class="nav-icon">♫</span>Музика</button><button class="nav-button" data-screen="song"><span class="nav-icon">◉</span>Песен</button><button class="nav-button" data-screen="equalizer"><span class="nav-icon">≋</span>Звук</button><button class="nav-button" data-screen="browser"><span class="nav-icon">◎</span>Браузър</button></nav>
-<audio id="audio" playsinline preload="metadata"></audio>
+
+<audio id="audio" preload="metadata"></audio>
+
 <script>
-"use strict";
-const audio=document.getElementById("audio"),$=id=>document.getElementById(id);
-let songs=[],currentSongIndex=-1,shuffleEnabled=false,repeatMode=0,seeking=false,db=null;
-const DB_NAME="QMaxPlayerLibrary",DB_VERSION=1,STORE="tracks";
-function openDB(){return new Promise((resolve,reject)=>{if(!("indexedDB" in window)){reject(new Error("IndexedDB не се поддържа"));return}const req=indexedDB.open(DB_NAME,DB_VERSION);req.onupgradeneeded=()=>{const d=req.result;if(!d.objectStoreNames.contains(STORE))d.createObjectStore(STORE,{keyPath:"id",autoIncrement:true})};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)})}
-function dbRequest(mode,action,value){return new Promise((resolve,reject)=>{if(!db){reject(new Error("Няма локална база"));return}const tx=db.transaction(STORE,mode),store=tx.objectStore(STORE);let req;if(action==="all")req=store.getAll();else if(action==="add")req=store.add(value);else if(action==="clear")req=store.clear();else if(action==="delete")req=store.delete(value);if(req){req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)}else{tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error)}})}
-function makeSong(record){return {...record,url:URL.createObjectURL(record.blob)}}
-function safeRevoke(song){if(song&&song.url)URL.revokeObjectURL(song.url)}
-async function initLibrary(){try{db=await openDB();const records=await dbRequest("readonly","all");songs=records.map(makeSong);renderLibrary();$("storageStatus").textContent=songs.length?`Запазени локално песни: ${songs.length}`:"Локалната библиотека е готова. Добавените песни ще се запазват, ако браузърът позволява.";if(songs.length){const last=Number(localStorage.getItem("qmax-last-song-id"));let idx=songs.findIndex(s=>s.id===last);if(idx<0)idx=0;currentSongIndex=idx;audio.src=songs[idx].url;updateSongInfo();$("audioStatus").textContent="Възстановена е последната избрана песен. Натисни Play.";}}catch(e){$("storageStatus").textContent="Постоянното запазване не е достъпно в този режим. Песните може да трябва да се добавят отново.";console.warn("Q-MAX storage:",e)}}
-function openScreen(name){document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("active",s.id===name));document.querySelectorAll(".nav-button").forEach(b=>b.classList.toggle("active",b.dataset.screen===name));window.scrollTo({top:0,behavior:"smooth"})}
-document.querySelectorAll("[data-screen]").forEach(b=>b.addEventListener("click",()=>openScreen(b.dataset.screen)));
-$("settingsButton").addEventListener("click",()=>openScreen("equalizer"));
-function formatTime(s){if(!Number.isFinite(s)||s<0)return"0:00";return Math.floor(s/60)+":"+String(Math.floor(s%60)).padStart(2,"0")}
-$("fileInput").addEventListener("change",async e=>{const files=Array.from(e.target.files||[]);for(const file of files){const record={name:file.name.replace(/\.[^.]+$/,""),artist:"Локален файл",filename:file.name,type:file.type||"audio/*",size:file.size,blob:file};try{if(db){const id=await dbRequest("readwrite","add",record);record.id=id;record.url=URL.createObjectURL(file);songs.push(record)}else{record.url=URL.createObjectURL(file);songs.push(record)}}catch(err){record.url=URL.createObjectURL(file);songs.push(record);$("storageStatus").textContent="Някои файлове са добавени само за текущата сесия."}}renderLibrary();if(currentSongIndex<0&&songs.length)loadSong(0,false);else if(db)$("storageStatus").textContent=`Песни в библиотеката: ${songs.length}. Запазването зависи от поддръжката на браузъра.`;e.target.value=""});
-function renderLibrary(){const box=$("songList"),q=$("search").value.trim().toLowerCase();box.innerHTML="";const filtered=songs.map((song,index)=>({song,index})).filter(x=>(x.song.name+" "+x.song.artist+" "+(x.song.filename||"")).toLowerCase().includes(q));if(!filtered.length){const empty=document.createElement("div");empty.className="glass card";const p=document.createElement("p");p.style.margin="0";p.textContent=songs.length?"Няма намерени песни.":"Все още няма добавена музика.";empty.append(p);box.append(empty);return}filtered.forEach(({song,index})=>{const row=document.createElement("div");row.className="song-row";const icon=document.createElement("div");icon.className="song-icon";icon.textContent="♫";const info=document.createElement("div");info.className="song-info";const name=document.createElement("div");name.className="song-name";name.textContent=song.name;const artist=document.createElement("div");artist.className="song-artist";artist.textContent=song.artist;info.append(name,artist);const play=document.createElement("button");play.textContent=index===currentSongIndex&&!audio.paused?"Ⅱ":"▶";play.setAttribute("aria-label","Пусни "+song.name);play.addEventListener("click",()=>{if(index===currentSongIndex&&!audio.paused){audio.pause()}else loadSong(index,true)});const del=document.createElement("button");del.textContent="⋯";del.setAttribute("aria-label","Опции за "+song.name);del.title="Премахни песента";del.addEventListener("click",async()=>{if(!confirm(`Да премахна ли „${song.name}“ от библиотеката?`))return;await removeSong(index)});row.append(icon,info,play,del);box.append(row)})}
-async function removeSong(index){const removed=songs[index];if(!removed)return;if(removed.id&&db){try{await dbRequest("readwrite","delete",removed.id)}catch(e){}}safeRevoke(removed);songs.splice(index,1);if(index===currentSongIndex){audio.pause();audio.removeAttribute("src");audio.load();currentSongIndex=-1;if(songs.length)loadSong(Math.min(index,songs.length-1),false);else resetSongInfo()}else if(index<currentSongIndex)currentSongIndex--;renderLibrary()}
-$("search").addEventListener("input",renderLibrary);
-function loadSong(index,autoplay){if(!songs.length)return;index=(index+songs.length)%songs.length;currentSongIndex=index;audio.src=songs[index].url;audio.load();updateSongInfo();renderLibrary();if(songs[index].id)try{localStorage.setItem("qmax-last-song-id",String(songs[index].id))}catch(e){}if(autoplay)audio.play().then(updatePlaybackUI).catch(()=>{$("audioStatus").textContent="Натисни Play, за да стартираш."});openScreen("song")}
-function resetSongInfo(){$("songTitle").textContent="Няма избрана песен";$("songArtist").textContent="Q-MAX PLAYER";$("homeSong").textContent="Няма избрана песен";$("homeArtist").textContent="Отвори библиотеката и избери аудиофайл."}
-function updateSongInfo(){const s=songs[currentSongIndex];if(!s)return;$("songTitle").textContent=s.name;$("songArtist").textContent=s.artist;$("homeSong").textContent=s.name;$("homeArtist").textContent=s.artist}
-async function togglePlayback(){if(currentSongIndex<0){openScreen("library");return}if(audio.paused){try{if(audioContext&&audioContext.state==="suspended")await audioContext.resume();await audio.play();updatePlaybackUI()}catch(e){$("audioStatus").textContent="Неуспешно пускане. Натисни Play отново."}}else audio.pause()}
-$("playButton").addEventListener("click",togglePlayback);
-function nextSong(){if(!songs.length)return;if(shuffleEnabled&&songs.length>1){let n=currentSongIndex;while(n===currentSongIndex)n=Math.floor(Math.random()*songs.length);loadSong(n,true)}else if(currentSongIndex<songs.length-1)loadSong(currentSongIndex+1,true);else if(repeatMode===1)loadSong(0,true);else{audio.pause();audio.currentTime=0}}
-function previousSong(){if(!songs.length)return;if(audio.currentTime>3){audio.currentTime=0;return}loadSong(currentSongIndex-1,true)}
-$("nextButton").addEventListener("click",nextSong);$("previousButton").addEventListener("click",previousSong);
-$("shuffleButton").addEventListener("click",()=>{shuffleEnabled=!shuffleEnabled;$("shuffleButton").style.color=shuffleEnabled?"#c084fc":"";$("shuffleButton").setAttribute("aria-pressed",String(shuffleEnabled))});
-$("repeatButton").addEventListener("click",()=>{repeatMode=(repeatMode+1)%3;$("repeatButton").textContent=repeatMode===2?"🔂":"🔁";$("repeatButton").style.color=repeatMode?"#c084fc":"";$("repeatButton").title=["Повторение изключено","Повторение на всички песни","Повторение на една песен"][repeatMode]});
-audio.addEventListener("ended",()=>{if(repeatMode===2){audio.currentTime=0;audio.play().catch(()=>{});return}if(currentSongIndex<songs.length-1||repeatMode===1)nextSong()});
-audio.addEventListener("loadedmetadata",()=>{$("duration").textContent=formatTime(audio.duration)});
-audio.addEventListener("timeupdate",()=>{if(!seeking&&audio.duration)$("seekBar").value=audio.currentTime/audio.duration*1000;$("currentTime").textContent=formatTime(audio.currentTime);$("duration").textContent=formatTime(audio.duration)});
-$("seekBar").addEventListener("input",()=>{seeking=true;if(audio.duration)$("currentTime").textContent=formatTime(Number($("seekBar").value)/1000*audio.duration)});
-$("seekBar").addEventListener("change",()=>{if(audio.duration)audio.currentTime=Number($("seekBar").value)/1000*audio.duration;seeking=false});
-$("volume").addEventListener("input",()=>{audio.volume=Number($("volume").value);$("volumeValue").textContent=Math.round(audio.volume*100)+"%"});audio.volume=.8;
-function updatePlaybackUI(){$("playButton").textContent=audio.paused?"▶":"Ⅱ";$("audioStatus").textContent=audio.paused?"Пауза":"Възпроизвежда се";renderLibrary()}
-audio.addEventListener("play",updatePlaybackUI);audio.addEventListener("pause",updatePlaybackUI);
-let audioContext=null,sourceNode=null,filters=[],preampNode=null,compressorNode=null,analyserNode=null,eqInitialized=false;
-async function initializeEqualizer(){if(eqInitialized){if(audioContext.state==="suspended")await audioContext.resume();return true}const AC=window.AudioContext||window.webkitAudioContext;if(!AC){$("eqNotice").textContent="Web Audio не се поддържа в тази среда.";return false}try{audioContext=new AC();sourceNode=audioContext.createMediaElementSource(audio);const settings=[{type:"lowshelf",frequency:60},{type:"peaking",frequency:250,Q:1},{type:"peaking",frequency:1000,Q:1},{type:"peaking",frequency:4000,Q:1},{type:"highshelf",frequency:12000}];filters=settings.map(s=>{const f=audioContext.createBiquadFilter();f.type=s.type;f.frequency.value=s.frequency;if(s.Q)f.Q.value=s.Q;f.gain.value=0;return f});preampNode=audioContext.createGain();compressorNode=audioContext.createDynamicsCompressor();analyserNode=audioContext.createAnalyser();analyserNode.fftSize=256;analyserNode.smoothingTimeConstant=.82;sourceNode.connect(filters[0]);for(let i=0;i<filters.length-1;i++)filters[i].connect(filters[i+1]);filters[filters.length-1].connect(preampNode);preampNode.connect(compressorNode);compressorNode.connect(analyserNode);analyserNode.connect(audioContext.destination);eqInitialized=true;await audioContext.resume();applyEqualizer();applyCompressor();return true}catch(e){console.error("Q-MAX EQ",e);$("eqNotice").textContent="Не успях да стартирам Web Audio EQ. Презареди страницата и опитай отново.";$("eqEnabled").checked=false;return false}}
-function updateEQLabels(){document.querySelectorAll(".eq-slider").forEach((s,i)=>{const v=Number(s.value);$("db"+i).textContent=(v>0?"+":"")+v+" dB"})}
-function applyEqualizer(){updateEQLabels();const pre=Number($("preamp").value);$("preampValue").textContent=pre+" dB";if(!eqInitialized)return;document.querySelectorAll(".eq-slider").forEach((s,i)=>filters[i].gain.setTargetAtTime(Number(s.value),audioContext.currentTime,.025));preampNode.gain.setTargetAtTime(Math.pow(10,pre/20),audioContext.currentTime,.025)}
-function applyCompressor(){const n=Number($("compressorControl").value);$("compressorValue").textContent=n+"%";if(!eqInitialized)return;compressorNode.threshold.value=-10-n*.22;compressorNode.knee.value=8+n*.15;compressorNode.ratio.value=1+n*.055;compressorNode.attack.value=.004;compressorNode.release.value=.2}
-$("eqEnabled").addEventListener("change",async()=>{if(!$("eqEnabled").checked){$("eqNotice").textContent="EQ е изключен. Ако вече е създаден аудио филтърът, плъзгачите остават приложени.";return}if(currentSongIndex<0){$("eqEnabled").checked=false;$("eqNotice").textContent="Първо избери песен.";return}const ok=await initializeEqualizer();if(ok)$("eqNotice").textContent="Q-MAX EQ е активен. Плъзгачите променят реалния звук."});
-document.querySelectorAll(".eq-slider").forEach(s=>s.addEventListener("input",()=>{document.querySelectorAll(".preset").forEach(b=>b.classList.remove("active"));applyEqualizer()}));
-$("preamp").addEventListener("input",applyEqualizer);$("compressorControl").addEventListener("input",applyCompressor);
-const presets={flat:[0,0,0,0,0],clean:[-1,-1,0,2,2],bass:[5,3,0,-1,-2],vocal:[-2,-1,2,3,1],bright:[-2,-1,0,2,4]};
-function applyPreset(name){const vals=presets[name];if(!vals)return;document.querySelectorAll(".eq-slider").forEach((s,i)=>s.value=vals[i]);document.querySelectorAll(".preset").forEach(b=>b.classList.toggle("active",b.dataset.preset===name));$("preamp").value=name==="flat"?0:-3;applyEqualizer()}
-document.querySelectorAll(".preset").forEach(b=>b.addEventListener("click",()=>applyPreset(b.dataset.preset)));$("resetEQ").addEventListener("click",()=>applyPreset("flat"));
-function startVisualizer(id){const canvas=$(id),ctx=canvas.getContext("2d");function draw(){const w=canvas.clientWidth,h=canvas.clientHeight,r=Math.min(devicePixelRatio||1,2);if(w&&h){if(canvas.width!==Math.round(w*r)||canvas.height!==Math.round(h*r)){canvas.width=Math.round(w*r);canvas.height=Math.round(h*r)}ctx.setTransform(r,0,0,r,0,0);ctx.clearRect(0,0,w,h);let data=null;if(analyserNode&&eqInitialized){data=new Uint8Array(analyserNode.frequencyBinCount);analyserNode.getByteFrequencyData(data)}const bars=34,gap=3,bw=(w-gap*(bars-1))/bars;for(let i=0;i<bars;i++){const strength=data?data[Math.floor(i/bars*data.length)]/255:.08+(Math.sin(Date.now()/550+i*.65)+1)*.04,bh=Math.max(4,strength*(h-10)),g=ctx.createLinearGradient(0,h-bh,0,h);g.addColorStop(0,"#c084fc");g.addColorStop(.5,"#8174ff");g.addColorStop(1,"#3478f6");ctx.fillStyle=g;ctx.beginPath();if(ctx.roundRect)ctx.roundRect(i*(bw+gap),h-bh,bw,bh,4);else ctx.rect(i*(bw+gap),h-bh,bw,bh);ctx.fill()}}requestAnimationFrame(draw)}draw()}
-startVisualizer("homeVisualizer");startVisualizer("songVisualizer");
-function openWebsite(raw){let v=String(raw||"").trim();if(!v)v="https://www.google.com";if(!/^https?:\/\//i.test(v))v="https://"+v;try{const u=new URL(v);if(!["https:","http:"].includes(u.protocol))throw Error();const p=window.open(u.href,"_blank","noopener,noreferrer");if(!p)window.location.href=u.href}catch(e){alert("Адресът не е валиден.")}}
-$("openWebsite").addEventListener("click",()=>openWebsite($("browserURL").value));$("youtubeButton").addEventListener("click",()=>openWebsite("https://www.youtube.com"));$("googleButton").addEventListener("click",()=>openWebsite("https://www.google.com"));
-updateEQLabels();renderLibrary();initLibrary();
+(() => {
+  "use strict";
+
+  const $ = id => document.getElementById(id);
+  const audio = $("audio");
+  const progress = $("progress");
+  const progressWrap = $("progressWrap");
+  const fileInput = $("fileInput");
+  const songList = $("songList");
+  const emptyState = $("emptyState");
+
+  let songs = [];
+  let currentIndex = -1;
+  let shuffle = false;
+  let repeat = false;
+  let eqEnabled = true;
+  let bassBoost = false;
+  let audioContext = null;
+  let sourceNode = null;
+  let filters = [];
+  let bassFilter = null;
+  let analyser = null;
+  let masterGain = null;
+  let db = null;
+  let dragging = false;
+  let objectUrl = null;
+  let saveTimer = null;
+  let favorites = new Set();
+
+  const presets = {
+    custom:   [4,2,0,2,3],
+    bass:     [9,5,1,0,2],
+    balanced: [2,1,0,1,2],
+    vocal:    [-2,0,3,4,2],
+    treble:   [-2,-1,0,3,6],
+    flat:     [0,0,0,0,0]
+  };
+
+  function formatTime(seconds) {
+    if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
+    const m = Math.floor(seconds / 60);
+    const s = Math.floor(seconds % 60);
+    return `${m}:${String(s).padStart(2,"0")}`;
+  }
+
+  function safeName(name) {
+    return String(name || "Unknown").replace(/\.[^.]+$/, "");
+  }
+
+  function setStatus(message) { $("status").textContent = "● " + message; }
+
+  function updateRange(input) {
+    const min = Number(input.min || 0);
+    const max = Number(input.max || 100);
+    const val = Number(input.value || 0);
+    const pct = max === min ? 0 : ((val - min) / (max - min)) * 100;
+    input.style.setProperty("--pct", pct + "%");
+  }
+
+  function initAudioGraph() {
+    if (audioContext) {
+      if (audioContext.state === "suspended") audioContext.resume().catch(() => {});
+      return;
+    }
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) {
+      setStatus("AUDIO EQ N/A");
+      return;
+    }
+    try {
+      audioContext = new AC();
+      sourceNode = audioContext.createMediaElementSource(audio);
+      const frequencies = [60,250,1000,4000,12000];
+      const types = ["lowshelf","peaking","peaking","peaking","highshelf"];
+
+      filters = frequencies.map((frequency,i) => {
+        const node = audioContext.createBiquadFilter();
+        node.type = types[i];
+        node.frequency.value = frequency;
+        node.Q.value = i === 1 || i === 2 || i === 3 ? 1 : 0.7;
+        node.gain.value = Number(document.querySelector(`[data-band="${i}"]`).value);
+        return node;
+      });
+
+      bassFilter = audioContext.createBiquadFilter();
+      bassFilter.type = "lowshelf";
+      bassFilter.frequency.value = 90;
+      bassFilter.gain.value = bassBoost ? 5 : 0;
+
+      analyser = audioContext.createAnalyser();
+      analyser.fftSize = 256;
+      analyser.smoothingTimeConstant = 0.82;
+
+      masterGain = audioContext.createGain();
+      masterGain.gain.value = Number($("volume").value) / 100;
+
+      sourceNode.connect(bassFilter);
+      let previous = bassFilter;
+      filters.forEach(filter => {
+        previous.connect(filter);
+        previous = filter;
+      });
+      previous.connect(analyser);
+      analyser.connect(masterGain);
+      masterGain.connect(audioContext.destination);
+      applyEqState();
+    } catch (error) {
+      console.error("Audio setup failed:", error);
+      setStatus("AUDIO READY");
+    }
+  }
+
+  function applyEqState() {
+    if (!audioContext || !filters.length) return;
+    const now = audioContext.currentTime;
+    filters.forEach((filter,i) => {
+      const value = Number(document.querySelector(`[data-band="${i}"]`).value);
+      filter.gain.setTargetAtTime(eqEnabled ? value : 0, now, 0.025);
+    });
+    if (bassFilter) {
+      bassFilter.gain.setTargetAtTime(eqEnabled && bassBoost ? 5 : 0, now, 0.025);
+    }
+    $("eqToggle").textContent = eqEnabled ? "EQ ON" : "EQ OFF";
+    $("eqToggle").classList.toggle("active", eqEnabled);
+    $("bassBtn").classList.toggle("active", bassBoost);
+  }
+
+  function setEqValue(index, value) {
+    $("val" + index).textContent = (value > 0 ? "+" : "") + value + " dB";
+    if (filters[index] && audioContext) {
+      filters[index].gain.setTargetAtTime(eqEnabled ? Number(value) : 0, audioContext.currentTime, 0.025);
+    }
+  }
+
+  document.querySelectorAll(".eq-slider").forEach(slider => {
+    slider.addEventListener("input", () => {
+      const i = Number(slider.dataset.band);
+      setEqValue(i, slider.value);
+      $("preset").value = "custom";
+      if (audioContext && audioContext.state === "suspended") audioContext.resume().catch(() => {});
+    });
+  });
+
+  $("preset").addEventListener("change", () => {
+    const values = presets[$("preset").value];
+    if (!values) return;
+    document.querySelectorAll(".eq-slider").forEach((slider,i) => {
+      slider.value = values[i];
+      setEqValue(i, values[i]);
+    });
+    initAudioGraph();
+    applyEqState();
+  });
+
+  $("eqToggle").addEventListener("click", () => {
+    eqEnabled = !eqEnabled;
+    initAudioGraph();
+    applyEqState();
+  });
+
+  $("bassBtn").addEventListener("click", () => {
+    bassBoost = !bassBoost;
+    initAudioGraph();
+    applyEqState();
+  });
+
+  $("volume").addEventListener("input", () => {
+    updateRange($("volume"));
+    if (masterGain && audioContext) {
+      masterGain.gain.setTargetAtTime(Number($("volume").value)/100,audioContext.currentTime,0.025);
+    } else {
+      audio.volume = Number($("volume").value)/100;
+    }
+  });
+
+  function openDB() {
+    return new Promise((resolve,reject) => {
+      if (!("indexedDB" in window)) return reject(new Error("IndexedDB unavailable"));
+      const request = indexedDB.open("QMaxGoldLibrary", 1);
+      request.onupgradeneeded = () => {
+        const database = request.result;
+        if (!database.objectStoreNames.contains("songs")) {
+          database.createObjectStore("songs", {keyPath:"id",autoIncrement:true});
+        }
+      };
+      request.onsuccess = () => { db = request.result; resolve(db); };
+      request.onerror = () => reject(request.error);
+    });
+  }
+
+  function storeSong(file) {
+    return new Promise((resolve,reject) => {
+      if (!db) return reject(new Error("Storage unavailable"));
+      const tx = db.transaction("songs","readwrite");
+      tx.objectStore("songs").add({
+        name:file.name,
+        type:file.type || "audio/mpeg",
+        size:file.size,
+        added:Date.now(),
+        blob:file
+      });
+      tx.oncomplete = resolve;
+      tx.onerror = () => reject(tx.error);
+    });
+  }
+
+  function readSongs() {
+    return new Promise((resolve,reject) => {
+      if (!db) return resolve([]);
+      const tx = db.transaction("songs","readonly");
+      const request = tx.objectStore("songs").getAll();
+      request.onsuccess = () => resolve(request.result || []);
+      request.onerror = () => reject(request.error);
+    });
+  }
+
+  function deleteStoredSong(id) {
+    return new Promise((resolve,reject) => {
+      if (!db) return resolve();
+      const tx = db.transaction("songs","readwrite");
+      tx.objectStore("songs").delete(id);
+      tx.oncomplete = resolve;
+      tx.onerror = () => reject(tx.error);
+    });
+  }
+
+  function songUrl(song) {
+    return URL.createObjectURL(song.blob);
+  }
+
+  async function importFiles(files) {
+    const list = Array.from(files || []).filter(file =>
+      file.type.startsWith("audio/") || /\.(mp3|m4a|aac|wav|ogg|flac|opus|aiff?)$/i.test(file.name)
+    );
+    if (!list.length) return;
+    setStatus("IMPORTING");
+    let added = 0;
+    for (const file of list) {
+      const song = {
+        name:file.name,
+        type:file.type || "audio/mpeg",
+        size:file.size,
+        blob:file,
+        temporary:true
+      };
+      try {
+        if (db) {
+          await storeSong(file);
+          added++;
+        } else {
+          songs.push({...song, id:"tmp-" + Date.now() + "-" + Math.random()});
+          added++;
+        }
+      } catch (error) {
+        console.warn("Could not persist audio:", error);
+        songs.push({...song, id:"tmp-" + Date.now() + "-" + Math.random()});
+        added++;
+      }
+    }
+    await refreshLibrary();
+    if (added) setStatus("LIBRARY READY");
+    fileInput.value = "";
+  }
+
+  async function refreshLibrary() {
+    const previousId = currentIndex >= 0 && songs[currentIndex] ? songs[currentIndex].id : null;
+    try {
+      if (db) songs = await readSongs();
+    } catch (error) {
+      console.warn("Could not read library:", error);
+    }
+    if (previousId != null) {
+      const found = songs.findIndex(song => song.id === previousId);
+      if (found >= 0) currentIndex = found;
+      else currentIndex = -1;
+    }
+    renderSongs();
+  }
+
+  function renderSongs() {
+    const query = $("search").value.trim().toLocaleLowerCase();
+    const visible = songs.map((song,index) => ({song,index}))
+      .filter(item => item.song.name.toLocaleLowerCase().includes(query));
+    songList.replaceChildren();
+    $("libraryCount").textContent = songs.length + (songs.length === 1 ? " песен" : " песни");
+    emptyState.style.display = visible.length ? "none" : "block";
+    if (!songs.length) emptyState.innerHTML = "Библиотеката е празна.<br>Натисни ＋, за да добавиш музика от устройството.";
+    else if (!visible.length) emptyState.textContent = "Няма намерени песни.";
+
+    visible.forEach(({song,index},number) => {
+      const row = document.createElement("div");
+      row.className = "song" + (index === currentIndex ? " current" : "");
+      row.setAttribute("role","button");
+      row.setAttribute("tabindex","0");
+      const numberBox = document.createElement("div");
+      numberBox.className = "song-number";
+      numberBox.textContent = index === currentIndex && !audio.paused ? "♫" : String(number+1).padStart(2,"0");
+      const textBox = document.createElement("div");
+      textBox.className = "song-text";
+      const name = document.createElement("div");
+      name.className = "song-name";
+      name.textContent = safeName(song.name);
+      const detail = document.createElement("div");
+      detail.className = "song-detail";
+      detail.textContent = song.size ? (song.size / 1048576).toFixed(1) + " MB" : "Локален файл";
+      textBox.append(name,detail);
+      const play = document.createElement("span");
+      play.className = "song-play";
+      play.textContent = index === currentIndex && !audio.paused ? "Ⅱ" : "▶";
+      row.append(numberBox,textBox,play);
+      const activate = () => playSong(index);
+      row.addEventListener("click",activate);
+      row.addEventListener("keydown",event => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          activate();
+        }
+      });
+      songList.appendChild(row);
+    });
+  }
+
+  async function playSong(index) {
+    if (index < 0 || index >= songs.length) return;
+    const song = songs[index];
+    currentIndex = index;
+
+    if (objectUrl) URL.revokeObjectURL(objectUrl);
+    objectUrl = songUrl(song);
+    audio.src = objectUrl;
+    audio.load();
+
+    $("trackTitle").textContent = safeName(song.name);
+    $("trackArtist").textContent = "Q-MAX • BLACK & GOLD";
+    $("trackFilename").textContent = song.name;
+    $("favoriteBtn").textContent = favorites.has(song.id) ? "♥" : "♡";
+    $("favoriteBtn").classList.toggle("active",favorites.has(song.id));
+    $("playBtn").textContent = "Ⅱ";
+    $("record").classList.add("spinning");
+    $("artStage").classList.add("playing");
+    setStatus("LOADING");
+    renderSongs();
+    initAudioGraph();
+
+    try {
+      if (audioContext && audioContext.state === "suspended") await audioContext.resume();
+      await audio.play();
+      setStatus("NOW PLAYING");
+    } catch (error) {
+      console.warn("Playback did not start:",error);
+      $("playBtn").textContent = "▶";
+      $("record").classList.remove("spinning");
+      $("artStage").classList.remove("playing");
+      setStatus("TAP TO PLAY");
+    }
+  }
+
+  async function togglePlay() {
+    if (currentIndex < 0) {
+      if (songs.length) return playSong(0);
+      fileInput.click();
+      return;
+    }
+    if (audio.paused) {
+      initAudioGraph();
+      try {
+        if (audioContext && audioContext.state === "suspended") await audioContext.resume();
+        await audio.play();
+      } catch (error) {
+        setStatus("TAP TO PLAY");
+      }
+    } else {
+      audio.pause();
+    }
+  }
+
+  function nextSong() {
+    if (!songs.length) return;
+    if (shuffle && songs.length > 1) {
+      let index = currentIndex;
+      while (index === currentIndex) index = Math.floor(Math.random()*songs.length);
+      playSong(index);
+    } else {
+      playSong((currentIndex+1+ songs.length)%songs.length);
+    }
+  }
+
+  function previousSong() {
+    if (!songs.length) return;
+    if (audio.currentTime > 3) {
+      audio.currentTime = 0;
+    } else {
+      playSong((currentIndex-1+songs.length)%songs.length);
+    }
+  }
+
+  $("playBtn").addEventListener("click",togglePlay);
+  $("nextBtn").addEventListener("click",nextSong);
+  $("prevBtn").addEventListener("click",previousSong);
+
+  $("shuffleBtn").addEventListener("click",() => {
+    shuffle = !shuffle;
+    $("shuffleBtn").classList.toggle("active",shuffle);
+    $("shuffleBtn").title = shuffle ? "Разбъркването е включено" : "Разбъркване";
+  });
+
+  $("repeatBtn").addEventListener("click",() => {
+    repeat = !repeat;
+    audio.loop = repeat;
+    $("repeatBtn").classList.toggle("active",repeat);
+    $("repeatBtn").title = repeat ? "Повтарянето е включено" : "Повтаряне";
+  });
+
+  $("favoriteBtn").addEventListener("click",() => {
+    if (currentIndex < 0) return;
+    const id = songs[currentIndex].id;
+    if (favorites.has(id)) favorites.delete(id);
+    else favorites.add(id);
+    $("favoriteBtn").textContent = favorites.has(id) ? "♥" : "♡";
+    $("favoriteBtn").classList.toggle("active",favorites.has(id));
+    try { localStorage.setItem("qmax-gold-favorites",JSON.stringify([...favorites])); } catch (_) {}
+  });
+
+  $("addBtn").addEventListener("click",() => fileInput.click());
+  fileInput.addEventListener("change",() => importFiles(fileInput.files));
+  $("search").addEventListener("input",renderSongs);
+
+  progress.addEventListener("pointerdown",() => {
+    dragging = true;
+    progressWrap.classList.add("dragging");
+  });
+  function stopDragging() {
+    dragging = false;
+    progressWrap.classList.remove("dragging");
+  }
+  window.addEventListener("pointerup",stopDragging);
+  window.addEventListener("pointercancel",stopDragging);
+
+  progress.addEventListener("input",() => {
+    updateRange(progress);
+    if (Number.isFinite(audio.duration) && audio.duration > 0) {
+      $("currentTime").textContent = formatTime(audio.duration * Number(progress.value)/1000);
+    }
+  });
+  progress.addEventListener("change",() => {
+    if (Number.isFinite(audio.duration) && audio.duration > 0) {
+      audio.currentTime = audio.duration * Number(progress.value)/1000;
+    }
+  });
+
+  audio.addEventListener("timeupdate",() => {
+    if (!dragging && Number.isFinite(audio.duration) && audio.duration > 0) {
+      progress.value = Math.round(audio.currentTime/audio.duration*1000);
+      updateRange(progress);
+      $("currentTime").textContent = formatTime(audio.currentTime);
+    }
+  });
+  audio.addEventListener("loadedmetadata",() => {
+    $("duration").textContent = formatTime(audio.duration);
+    $("currentTime").textContent = formatTime(audio.currentTime);
+  });
+  audio.addEventListener("play",() => {
+    $("playBtn").textContent = "Ⅱ";
+    $("record").classList.add("spinning");
+    $("artStage").classList.add("playing");
+    setStatus("NOW PLAYING");
+    renderSongs();
+  });
+  audio.addEventListener("pause",() => {
+    $("playBtn").textContent = "▶";
+    $("record").classList.remove("spinning");
+    $("artStage").classList.remove("playing");
+    if (currentIndex >= 0) setStatus("PAUSED");
+    renderSongs();
+  });
+  audio.addEventListener("ended",() => {
+    if (!repeat) nextSong();
+  });
+  audio.addEventListener("error",() => {
+    if (audio.src) setStatus("FILE ERROR");
+  });
+
+  const canvas = $("visualizer");
+  const ctx = canvas.getContext("2d");
+  let bars = new Uint8Array(128);
+  function drawVisualizer() {
+    const rect = canvas.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1,2);
+    const width = Math.max(1,Math.round(rect.width*dpr));
+    const height = Math.max(1,Math.round(rect.height*dpr));
+    if (canvas.width !== width || canvas.height !== height) {
+      canvas.width = width;
+      canvas.height = height;
+    }
+    ctx.clearRect(0,0,width,height);
+    if (analyser && audioContext && !audio.paused) {
+      analyser.getByteFrequencyData(bars);
+    } else {
+      for (let i=0;i<bars.length;i++) bars[i] *= 0.92;
+    }
+    const cx = width/2, cy = height/2;
+    const inner = width*.205;
+    const outer = width*.455;
+    const count = 64;
+    ctx.lineCap = "round";
+    for (let i=0;i<count;i++) {
+      const angle = (i/count)*Math.PI*2 - Math.PI/2;
+      const data = bars[Math.floor(i/count*bars.length)]/255;
+      const amplitude = (audio.paused ? .018 : .025) + data*.105;
+      const r1 = inner + width*.02;
+      const r2 = Math.min(outer,r1+width*amplitude);
+      ctx.beginPath();
+      ctx.moveTo(cx+Math.cos(angle)*r1,cy+Math.sin(angle)*r1);
+      ctx.lineTo(cx+Math.cos(angle)*r2,cy+Math.sin(angle)*r2);
+      ctx.strokeStyle = i%4===0 ? "rgba(255,231,161,.95)" : "rgba(212,175,55,.78)";
+      ctx.lineWidth = Math.max(1.2,width*.004);
+      ctx.shadowColor = "#d4af37";
+      ctx.shadowBlur = data*8*dpr;
+      ctx.stroke();
+    }
+    ctx.shadowBlur = 0;
+    requestAnimationFrame(drawVisualizer);
+  }
+
+  async function start() {
+    updateRange(progress);
+    updateRange($("volume"));
+    try {
+      const saved = JSON.parse(localStorage.getItem("qmax-gold-favorites") || "[]");
+      favorites = new Set(saved);
+    } catch (_) {}
+
+    try {
+      await openDB();
+      await refreshLibrary();
+      setStatus("LIBRARY READY");
+    } catch (error) {
+      console.warn("Persistent library unavailable:",error);
+      setStatus("READY");
+      renderSongs();
+    }
+    drawVisualizer();
+  }
+
+  start();
+})();
 </script>
 </body>
 </html>
